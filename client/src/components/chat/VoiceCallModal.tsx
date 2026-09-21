@@ -255,6 +255,19 @@ export const VoiceCallModal: React.FC<VoiceCallModalProps> = ({ isOpen, onClose,
   }, [isOpen]);
 
   const startVapiCall = async () => {
+    if (navigator?.mediaDevices?.getUserMedia) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Stop test stream tracks so Vapi takes full ownership of audio devices
+        stream.getTracks().forEach((track) => track.stop());
+      } catch (micErr: any) {
+        console.warn('[MIC PERMISSION ERROR]', micErr);
+        toast.error('Microphone permission required! Please click the icon in your address bar to allow microphone access.', { duration: 7000 });
+        setCallStatus('idle');
+        return;
+      }
+    }
+
     setCallStatus('connecting');
     setCallDuration(0);
     setTranscriptHistory([]);

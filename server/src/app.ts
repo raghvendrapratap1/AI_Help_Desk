@@ -45,14 +45,22 @@ app.use('/api/webhooks/whatsapp', whatsappRoutes);
 app.use('/api/vapi-webhook', vapiRoutes);
 app.use('/api/webhooks/vapi', vapiRoutes);
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
+// Health check endpoints (supports both /health and /api/health)
+app.get(['/health', '/api/health'], (req, res) => {
   res.json({
     status: 'online',
     clinic: 'Indore Poly Dental Clinic',
     time: new Date().toISOString()
   });
 });
+
+// Self-ping keep-alive interval to prevent Render free instance from spinning down
+const RENDER_EXTERNAL_URL = process.env.RENDER_EXTERNAL_URL || 'https://ai-help-desk-receptionist.onrender.com';
+setInterval(() => {
+  try {
+    fetch(`${RENDER_EXTERNAL_URL}/api/health`).catch(() => {});
+  } catch (_) {}
+}, 5 * 60 * 1000); // ping every 5 minutes
 
 // Serve frontend static build for mobile/public confirmation testing
 import path from 'path';

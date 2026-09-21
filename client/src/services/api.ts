@@ -8,9 +8,9 @@ const getBaseURL = () => {
     return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
   }
   if (typeof window !== 'undefined') {
-    // If running under Vercel, cloudflared or any remote host, route via relative /api (proxied via vercel.json or express)
+    // If running in browser and NOT localhost, point directly to live Render backend
     if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
-      return '/api';
+      return 'https://ai-help-desk-receptionist.onrender.com/api';
     }
   }
   return 'http://localhost:5000/api';

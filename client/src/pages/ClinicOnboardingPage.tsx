@@ -1,9 +1,9 @@
+import { ArrowRight, Building2, CheckCircle2, ChevronRight, CreditCard, ShieldCheck, Sparkles } from 'lucide-react';
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Building2, Sparkles, CheckCircle2, ArrowRight, ShieldCheck, CreditCard, ChevronRight } from 'lucide-react';
-import API from '../services/api';
 import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '../components/common/ThemeToggle';
+import API from '../services/api';
 
 export const ClinicOnboardingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -398,3 +398,4 @@ export const ClinicOnboardingPage: React.FC = () => {
     </div>
   );
 };
+

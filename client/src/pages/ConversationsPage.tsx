@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import API from '../services/api';
 import {
-  MessageSquare,
   Bot,
-  User,
-  Sparkles,
-  Phone,
-  Clock,
   ChevronLeft,
-  ChevronRight,
   ExternalLink,
-  Search,
-  Filter,
+  MessageSquare,
   RefreshCw,
-  AlertCircle
+  Search,
+  User
 } from 'lucide-react';
-import { LoadingState } from '../components/common/LoadingState';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { EmptyState } from '../components/common/EmptyState';
 import { ErrorState } from '../components/common/ErrorState';
+import { LoadingState } from '../components/common/LoadingState';
+import API from '../services/api';
 
 export const ConversationsPage: React.FC = () => {
   const [conversations, setConversations] = useState<any[]>([]);
@@ -135,9 +129,8 @@ export const ConversationsPage: React.FC = () => {
         <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
           {/* Left Column: Conversation List */}
           <div
-            className={`md:col-span-5 flex flex-col glass-panel rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm ${
-              mobileView === 'chat' ? 'hidden md:flex' : 'flex'
-            }`}
+            className={`md:col-span-5 flex flex-col glass-panel rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm ${mobileView === 'chat' ? 'hidden md:flex' : 'flex'
+              }`}
           >
             {/* Search Input */}
             <div className="p-3.5 border-b border-slate-200 dark:border-slate-800">
@@ -161,11 +154,10 @@ export const ConversationsPage: React.FC = () => {
                   <button
                     key={conv._id}
                     onClick={() => handleSelectConv(conv)}
-                    className={`w-full text-left p-4 transition-all flex flex-col gap-1.5 ${
-                      isSelected
+                    className={`w-full text-left p-4 transition-all flex flex-col gap-1.5 ${isSelected
                         ? 'bg-teal-500/10 dark:bg-teal-500/15 border-l-4 border-teal-500'
                         : 'hover:bg-slate-100/70 dark:hover:bg-slate-900/50'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center justify-between w-full">
                       <span className="font-bold text-xs text-slate-900 dark:text-slate-100 truncate">
@@ -207,9 +199,8 @@ export const ConversationsPage: React.FC = () => {
 
           {/* Right Column: Transcript Viewer */}
           <div
-            className={`md:col-span-7 flex flex-col glass-panel rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm ${
-              mobileView === 'list' ? 'hidden md:flex' : 'flex'
-            }`}
+            className={`md:col-span-7 flex flex-col glass-panel rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm ${mobileView === 'list' ? 'hidden md:flex' : 'flex'
+              }`}
           >
             {selectedConv ? (
               <>
@@ -273,11 +264,10 @@ export const ConversationsPage: React.FC = () => {
                           )}
 
                           <div
-                            className={`max-w-[85%] sm:max-w-[80%] px-3.5 sm:px-4 py-2.5 rounded-2xl leading-relaxed shadow-sm ${
-                              isAssistant
+                            className={`max-w-[85%] sm:max-w-[80%] px-3.5 sm:px-4 py-2.5 rounded-2xl leading-relaxed shadow-sm ${isAssistant
                                 ? 'bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-sm'
                                 : 'bg-teal-500 text-slate-950 font-medium rounded-tr-sm'
-                            }`}
+                              }`}
                           >
                             <p className="whitespace-pre-wrap break-words">{m.text}</p>
                             <span className="text-[9px] opacity-60 block mt-1 text-right">

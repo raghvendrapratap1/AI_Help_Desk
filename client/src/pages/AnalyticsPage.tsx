@@ -1,37 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import API from '../services/api';
-import { AnalyticsSummary, SourceAnalytics, UnansweredQuestion, VisitorTrendsData } from '../../../shared/types';
-import { LoadingState } from '../components/common/LoadingState';
-import { EmptyState } from '../components/common/EmptyState';
-import { ErrorState } from '../components/common/ErrorState';
-import { toast } from 'react-hot-toast';
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer
-} from 'recharts';
-import {
-  Users,
   Calendar,
+  CheckCircle2,
+  Globe,
+  HelpCircle,
+  Layers,
+  MessageSquare,
+  PhoneCall,
+  PieChart,
+  RefreshCw,
   Sparkles,
   TrendingUp,
-  HelpCircle,
-  Trash2,
-  RefreshCw,
-  CheckCircle2,
-  PieChart,
-  Globe,
-  PhoneCall,
-  MessageSquare,
-  Clock,
-  Layers
+  Users
 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
+} from 'recharts';
+import { AnalyticsSummary, SourceAnalytics, UnansweredQuestion, VisitorTrendsData } from '../../../shared/types';
+import { EmptyState } from '../components/common/EmptyState';
+import { ErrorState } from '../components/common/ErrorState';
+import { LoadingState } from '../components/common/LoadingState';
 import { useTheme } from '../context/ThemeContext';
+import API from '../services/api';
 
 export const AnalyticsPage: React.FC = () => {
   const { theme } = useTheme();
@@ -261,31 +259,28 @@ export const AnalyticsPage: React.FC = () => {
           <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/60 self-start sm:self-auto shrink-0">
             <button
               onClick={() => handleTrendTimeframeChange('today')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                trendTimeframe === 'today'
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${trendTimeframe === 'today'
                   ? 'bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 shadow-sm font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
+                }`}
             >
               Today
             </button>
             <button
               onClick={() => handleTrendTimeframeChange('week')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                trendTimeframe === 'week'
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${trendTimeframe === 'week'
                   ? 'bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 shadow-sm font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
+                }`}
             >
               This Week
             </button>
             <button
               onClick={() => handleTrendTimeframeChange('month')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                trendTimeframe === 'month'
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${trendTimeframe === 'month'
                   ? 'bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 shadow-sm font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
+                }`}
             >
               This Month
             </button>
@@ -428,41 +423,37 @@ export const AnalyticsPage: React.FC = () => {
           <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/60 self-start sm:self-auto shrink-0">
             <button
               onClick={() => handleSourceTimeframeChange('all')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
-                sourceTimeframe === 'all'
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${sourceTimeframe === 'all'
                   ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
+                }`}
             >
               All Time
             </button>
             <button
               onClick={() => handleSourceTimeframeChange('today')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
-                sourceTimeframe === 'today'
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${sourceTimeframe === 'today'
                   ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
+                }`}
             >
               Today
             </button>
             <button
               onClick={() => handleSourceTimeframeChange('week')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
-                sourceTimeframe === 'week'
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${sourceTimeframe === 'week'
                   ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
+                }`}
             >
               This Week
             </button>
             <button
               onClick={() => handleSourceTimeframeChange('month')}
-              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
-                sourceTimeframe === 'month'
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${sourceTimeframe === 'month'
                   ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
+                }`}
             >
               This Month
             </button>

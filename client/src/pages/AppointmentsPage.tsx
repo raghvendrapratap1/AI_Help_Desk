@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import API from '../services/api';
-import { Calendar as CalendarIcon, Clock, User, CheckCircle2, XCircle, AlertCircle, Filter } from 'lucide-react';
-import { LoadingState } from '../components/common/LoadingState';
+import { Calendar as CalendarIcon, CheckCircle2, Clock, Filter, User } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { EmptyState } from '../components/common/EmptyState';
 import { ErrorState } from '../components/common/ErrorState';
-import { toast } from 'react-hot-toast';
+import { LoadingState } from '../components/common/LoadingState';
+import API from '../services/api';
 
 export const AppointmentsPage: React.FC = () => {
   const [appointments, setAppointments] = useState<any[]>([]);
